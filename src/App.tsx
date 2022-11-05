@@ -7,6 +7,7 @@ import { HeaderApp } from './components/HeaderApp';
 import { Home } from './Pages/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Categorias } from './Pages/Categorias';
+import { NovaCategoria } from './Pages/NovaCategoria';
 
 
 const engine = new Styletron();
@@ -22,6 +23,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/categorias' element={<Categorias/>} />
+            <Route path='/nova-categoria' element={<NovaCategoria/>}/>
           </Routes>
         </BrowserRouter>
 

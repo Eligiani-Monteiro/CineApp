@@ -1,22 +1,34 @@
 import { useEffect, useState } from "react"
-import {listarCategorias} from '../api'
+import { Link } from "react-router-dom";
+import { listarCategorias } from '../api'
 
 
-export function Categorias(){
-    const[categorias,setCategorias] = useState([])
 
-    useEffect(()=>{
-        const getData = async()=>{
-        setCategorias(await listarCategorias())
+
+type Categoria = {
+    id: string,
+    name: string;
+}
+export function Categorias() {
+    const [categorias, setCategorias] = useState(Array<Categoria>)
+
+    useEffect(() => {
+        const getData = async () => {
+            setCategorias(await listarCategorias())
 
         }
         getData()
 
-    },[])
+    }, [])
     return (
-        <div>
-      <h1>Categorias</h1>
-      {categorias.map((categoria)=> <p>{categoria.name}</p>)}
-      </div>
+        <>
+            <h1>categorias</h1>
+            <Link to='/nova-categoria'>Nova Categoaria</Link>
+
+            <div className="Categoria"> 
+                {categorias.map((categoria) => <p>{categoria.name}</p>)}
+        
+             </div>
+        </>
     )
 }
